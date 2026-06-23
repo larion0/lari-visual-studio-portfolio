@@ -1,0 +1,1646 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lari Visual Studio - Visual Designer Portfolio</title>
+  <meta name="description" content="Premium visual design portfolio for social media, books, logos, brand identity, ecommerce visuals, posters and thumbnails.">
+  <style>
+    :root {
+      --paper: #faf7f2;
+      --cream: #f3ede3;
+      --card: #ffffff;
+      --ink: #2c2420;
+      --muted: #6f645c;
+      --line: rgba(44, 36, 32, 0.12);
+      --gold: #c9a96e;
+      --gold-dark: #a98142;
+      --dark: #2c2420;
+      --shadow: 0 18px 45px rgba(44, 36, 32, 0.12);
+      --radius: 8px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 94px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, "DM Sans", Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 247, 242, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+      transition: transform 220ms ease;
+      will-change: transform;
+    }
+
+    .site-header.is-hidden {
+      transform: translateY(-100%);
+    }
+
+    .nav {
+      width: min(var(--max), calc(100% - 32px));
+      min-height: 76px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      font-size: 16px;
+      white-space: nowrap;
+      padding-bottom: 3px;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a,
+    .footer-links a {
+      transition: color 180ms ease, opacity 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .footer-links a:hover {
+      color: var(--gold-dark);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-toggle span,
+    .menu-toggle::before,
+    .menu-toggle::after {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 999px;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .menu-toggle {
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .menu-toggle.is-open span {
+      opacity: 0;
+    }
+
+    .menu-toggle.is-open::before {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.is-open::after {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .section {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 76px 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: block;
+      color: var(--gold-dark);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1,
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 72px);
+      max-width: 600px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+    }
+
+    h3 {
+      font-size: 19px;
+      line-height: 1.2;
+    }
+
+    .subtext {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 620px;
+    }
+
+    .hero {
+      width: min(var(--max), calc(100% - 32px));
+      min-height: calc(100svh - 76px);
+      margin: 0 auto;
+      padding: 48px 0 72px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(320px, 1fr);
+      gap: 54px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      padding-top: 20px;
+    }
+
+    .hero-copy .subtext {
+      margin-top: 20px;
+      font-size: 17px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0 22px;
+      border: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+      cursor: pointer;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .btn.primary {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink);
+    }
+
+    .btn.dark {
+      background: var(--dark);
+      border-color: var(--dark);
+      color: var(--paper);
+    }
+
+    .hero-collage {
+      min-height: 560px;
+      position: relative;
+    }
+
+    .hero-card {
+      position: absolute;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(44, 36, 32, 0.08);
+    }
+
+    .hero-card.main {
+      width: 54%;
+      height: 72%;
+      left: 12%;
+      top: 6%;
+      z-index: 2;
+    }
+
+    .hero-card.side {
+      width: 46%;
+      height: 44%;
+      right: 0;
+      top: 0;
+      z-index: 3;
+    }
+
+    .hero-card.bottom {
+      width: 46%;
+      height: 45%;
+      right: 8%;
+      bottom: 0;
+      z-index: 4;
+    }
+
+    .hero-label {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(250, 247, 242, 0.88);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .services {
+      background: var(--cream);
+    }
+
+    .services .section,
+    .case-studies .section,
+    .process-band .section {
+      padding-top: 58px;
+      padding-bottom: 82px;
+    }
+
+    #packages {
+      padding-top: 54px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .service-card,
+    .project-card,
+    .package-card,
+    .testimonial,
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 32px rgba(44, 36, 32, 0.07);
+      overflow: hidden;
+    }
+
+    .service-card {
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-card figure,
+    .project-card figure {
+      margin: 0;
+      height: 210px;
+      background: var(--cream);
+    }
+
+    .service-card img,
+    .project-card img,
+    .case-image img,
+    .portrait img {
+      object-fit: cover;
+    }
+
+    .image-left {
+      object-position: left center;
+    }
+
+    .image-top {
+      object-position: center top;
+    }
+
+    .image-left-top {
+      object-position: left top;
+    }
+
+    .service-card div,
+    .project-card div,
+    .package-card,
+    .testimonial {
+      padding: 22px;
+    }
+
+    .service-card p,
+    .project-card p,
+    .package-card p,
+    .testimonial p,
+    .case-copy p,
+    .case-copy li,
+    .about-copy p,
+    .faq-panel {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .project-card figure {
+      height: 270px;
+    }
+
+    .project-type {
+      display: block;
+      margin: 6px 0 8px;
+      color: var(--gold-dark);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .case-studies {
+      background: var(--cream);
+    }
+
+    .case-list {
+      display: grid;
+      gap: 24px;
+      grid-auto-rows: 1fr;
+    }
+
+    .case-card {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 14px 32px rgba(44, 36, 32, 0.06);
+      height: 100%;
+      min-height: 460px;
+    }
+
+    .case-card:nth-child(even) .case-image {
+      order: 2;
+    }
+
+    .case-image {
+      height: 100%;
+      min-height: 0;
+      background: var(--paper);
+    }
+
+    .image-center {
+      object-position: center center;
+    }
+
+    .case-copy {
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .case-copy h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .case-detail {
+      margin-top: 16px;
+    }
+
+    .case-detail strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .case-detail ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .testimonial-slider {
+      position: relative;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .testimonial-viewport {
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+
+    .testimonials-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - 36px) / 3);
+      gap: 18px;
+      transition: transform 280ms ease;
+      will-change: transform;
+    }
+
+    .package-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: var(--gold-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .process-band {
+      background: var(--cream);
+    }
+
+    .process-band .section {
+      padding-top: 42px;
+      padding-bottom: 42px;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      text-align: center;
+    }
+
+    .process-step {
+      padding: 10px 14px;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--dark);
+      color: var(--paper);
+      font-weight: 800;
+    }
+
+    .process-step p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .stars {
+      color: var(--gold-dark);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .testimonial strong {
+      display: block;
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--ink);
+    }
+
+    .slider-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .slider-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+      box-shadow: 0 10px 24px rgba(44, 36, 32, 0.08);
+    }
+
+    .slider-btn:disabled {
+      opacity: 0.42;
+      cursor: default;
+      transform: none;
+    }
+
+    .slider-status {
+      min-width: 70px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .about-section {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding-top: 54px;
+      padding-bottom: 54px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1fr);
+      gap: 54px;
+      align-items: center;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .portrait {
+      height: 496px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      background: var(--cream);
+    }
+
+    .about-copy p + p {
+      margin-top: 16px;
+    }
+
+    .faq-list {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-button {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      text-align: left;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .faq-button span:last-child {
+      font-size: 22px;
+      line-height: 1;
+      transition: transform 180ms ease;
+    }
+
+    .faq-item.is-open .faq-button span:last-child {
+      transform: rotate(45deg);
+    }
+
+    .faq-panel {
+      display: none;
+      padding: 0 22px 22px;
+    }
+
+    .faq-item.is-open .faq-panel {
+      display: block;
+    }
+
+    .contact {
+      background: var(--dark);
+      color: var(--paper);
+    }
+
+    .contact .section {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1fr);
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact p {
+      color: rgba(250, 247, 242, 0.72);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 800;
+      color: rgba(250, 247, 242, 0.78);
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(250, 247, 242, 0.22);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--paper);
+      padding: 13px 14px;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .field textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .contact-note {
+      margin-top: 14px;
+      font-size: 13px;
+    }
+
+    .contact-note a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .site-footer {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      min-height: 72px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 22px;
+      font-size: 12px;
+    }
+
+    .footer-copy {
+      justify-self: start;
+    }
+
+    .footer-logo {
+      justify-self: center;
+      color: var(--ink);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-self: end;
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 920px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        inset: 76px 16px auto 16px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 14px 12px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-links a:last-child {
+        border-bottom: 0;
+      }
+
+      .hero,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-collage {
+        min-height: 520px;
+      }
+
+      .card-grid,
+      .packages-grid,
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .testimonials-track {
+        grid-auto-columns: calc((100% - 18px) / 2);
+      }
+
+      .case-card,
+      .case-card:nth-child(even) {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 0;
+      }
+
+      .case-list {
+        grid-auto-rows: auto;
+      }
+
+      .case-image {
+        height: 320px;
+        min-height: 320px;
+      }
+
+      .case-card:nth-child(even) .case-image {
+        order: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section,
+      .services .section,
+      .case-studies .section,
+      .process-band .section,
+      .contact .section {
+        padding-top: 58px;
+        padding-bottom: 58px;
+      }
+
+      .hero {
+        padding-top: 34px;
+        padding-bottom: 56px;
+      }
+
+      .hero-collage {
+        min-height: 440px;
+      }
+
+      .hero-card.main {
+        width: 64%;
+        height: 70%;
+        left: 0;
+      }
+
+      .hero-card.side {
+        width: 54%;
+      }
+
+      .hero-card.bottom {
+        width: 56%;
+        right: 0;
+      }
+
+      .card-grid,
+      .projects-grid,
+      .packages-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-track {
+        grid-auto-columns: 100%;
+      }
+
+      .project-card figure,
+      .service-card figure,
+      .case-image {
+        height: 250px;
+        min-height: 250px;
+      }
+
+      .case-copy {
+        padding: 24px;
+      }
+
+      .portrait {
+        height: 430px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        padding: 22px 0;
+      }
+
+      .footer-copy,
+      .footer-logo,
+      .footer-links {
+        justify-self: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="logo" href="#top">Lari Visual Studio</a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#casestudies">Case Studies</a>
+        <a href="#packages">Packages</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Premium Visual Design Studio</span>
+        <h1>Visual Design for Creator Brands</h1>
+        <p class="subtext">Premium brand identities, social media design, book visuals and digital products crafted with strategic thinking and refined aesthetics for modern brands and creators.</p>
+        <div class="button-row">
+          <a class="btn primary" href="#contact">Start a Project</a>
+          <a class="btn" href="mailto:larivisualstudio@proton.me">Email Directly</a>
+        </div>
+      </div>
+      <div class="hero-collage" aria-label="Portfolio image collage">
+        <figure class="hero-card main">
+          <img src="assets/portfolio/hero-book.jpg" alt="Premium book design mockup">
+          <figcaption class="hero-label">Book Design</figcaption>
+        </figure>
+        <figure class="hero-card side">
+          <img src="assets/portfolio/hero-ecommerce.jpg" alt="Wellness ecommerce design concept">
+          <figcaption class="hero-label">Ecommerce</figcaption>
+        </figure>
+        <figure class="hero-card bottom">
+          <img src="assets/portfolio/hero-brand.jpg" alt="Outdoor brand identity presentation">
+          <figcaption class="hero-label">Brand Identity</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="section">
+        <div class="section-heading">
+          <span class="eyebrow">Services</span>
+          <h2>End-to-end visual design solutions tailored for modern brands and digital creators.</h2>
+        </div>
+        <div class="card-grid">
+          <article class="service-card">
+            <figure><img class="image-left" src="assets/portfolio/service-social-new.jpg" alt="Social media content design preview"></figure>
+            <div>
+              <h3>Social Media Design</h3>
+              <p>Scroll-stopping posts, stories and content layouts for creators, brands and digital campaigns.</p>
+            </div>
+          </article>
+          <article class="service-card">
+            <figure><img src="assets/portfolio/service-book-new.jpg" alt="Book and lead magnet design preview"></figure>
+            <div>
+              <h3>Ebook and Lead Magnet Design</h3>
+              <p>Beautiful workbooks, ebooks and lead magnets that communicate value before the download.</p>
+            </div>
+          </article>
+          <article class="service-card">
+            <figure><img src="assets/portfolio/service-poster.jpg" alt="Poster and infographic design preview"></figure>
+            <div>
+              <h3>Poster and Infographic Design</h3>
+              <p>Clear, visually rich posters and campaign infographics for presentations, marketing and learning.</p>
+            </div>
+          </article>
+          <article class="service-card">
+            <figure><img src="assets/portfolio/service-logo.jpg" alt="Logo concept presentation preview"></figure>
+            <div>
+              <h3>Logo Concepts</h3>
+              <p>Memorable logo concepts with polished mockups, brand direction and visual consistency.</p>
+            </div>
+          </article>
+          <article class="service-card">
+            <figure><img class="image-left" src="assets/portfolio/service-youtube-new.jpg" alt="YouTube thumbnail design preview"></figure>
+            <div>
+              <h3>YouTube Thumbnail Design</h3>
+              <p>Eye-catching thumbnails for creator channels with strong contrast, focus and platform-ready framing.</p>
+            </div>
+          </article>
+          <article class="service-card">
+            <figure><img src="assets/portfolio/service-brand-new.jpg" alt="Brand identity board preview"></figure>
+            <div>
+              <h3>Brand Identity Boards</h3>
+              <p>Strategic visual boards with palette, typography, mockups and clean design direction.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-heading">
+        <span class="eyebrow">Featured Projects</span>
+        <h2>A selection of recent work across brand identity, packaging and digital design.</h2>
+      </div>
+      <div class="projects-grid">
+        <article class="project-card">
+          <figure><img src="assets/portfolio/project-vitalora.jpg" alt="Vitalora wellness ecommerce concept"></figure>
+          <div>
+            <h3>Vitalora</h3>
+            <span class="project-type">Wellness Brand Identity</span>
+            <p>Fitness-based identity with bold graphics and athletic direction.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <figure><img src="assets/portfolio/project-aurelia.jpg" alt="Aurelia Coffee website and brand concept"></figure>
+          <div>
+            <h3>Aurelia Coffee</h3>
+            <span class="project-type">Brand Identity and Logo Design</span>
+            <p>Premium coffee brand identity with logo, color system and ecommerce presentation.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <figure><img src="assets/portfolio/project-luma.jpg" alt="Luma clean beauty ecommerce concept"></figure>
+          <div>
+            <h3>Luma Clean Beauty</h3>
+            <span class="project-type">Web Design and Ecommerce</span>
+            <p>Complete ecommerce website mockup with responsive design and product showcase.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <figure><img src="assets/portfolio/project-herb.jpg" alt="Wild Herb Table cookbook presentation"></figure>
+          <div>
+            <h3>Wild Herb Table</h3>
+            <span class="project-type">Book Design</span>
+            <p>Creating a compelling cover and refreshing readable recipe layout for a cookbook concept.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <figure><img src="assets/portfolio/project-mode.jpg" alt="Elan Mode fashion ecommerce concept"></figure>
+          <div>
+            <h3>Elan Mode Paris</h3>
+            <span class="project-type">Brand Identity and Website</span>
+            <p>Fashion brand stationery and identity system with sophisticated typography.</p>
+          </div>
+        </article>
+        <article class="project-card">
+          <figure><img src="assets/portfolio/project-aura.jpg" alt="Luxury skincare packaging mockup"></figure>
+          <div>
+            <h3>Aura Skin</h3>
+            <span class="project-type">Packaging and Brand System</span>
+            <p>Luxury skincare packaging with refined materials, elegant typography and premium visual style.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="case-studies" id="casestudies">
+      <div class="section">
+        <div class="section-heading">
+          <span class="eyebrow">Featured Case Studies</span>
+          <h2>Portfolio studies with clear goals, deliverables and visual direction.</h2>
+          <p class="subtext">These are concept projects and portfolio studies, presented honestly while still showing commercial design value, scope and direction.</p>
+        </div>
+        <div class="case-list">
+          <article class="case-card">
+            <figure class="case-image"><img src="assets/portfolio/case-noir.jpg" alt="Noir Essence coffee packaging case study"></figure>
+            <div class="case-copy">
+              <span class="eyebrow">Coffee brand design</span>
+              <h3>Noir Essence</h3>
+              <div class="case-detail">
+                <strong>Project Goal:</strong>
+                <p>Develop a memorable artisan coffee concept with strong atmosphere, distinctive packaging and premium visual storytelling.</p>
+              </div>
+              <div class="case-detail">
+                <strong>Deliverables:</strong>
+                <ul>
+                  <li>Coffee packaging concept</li>
+                  <li>Product mockup presentation</li>
+                  <li>Visual direction board</li>
+                  <li>Premium color and typography system</li>
+                </ul>
+              </div>
+              <div class="case-detail">
+                <strong>Design Direction:</strong>
+                <p>Dark premium tones, editorial lighting and bold packaging details that feel refined, confident and ready for launch.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <figure class="case-image"><img class="image-center" src="assets/portfolio/case-celestial.jpg" alt="Neon Orbit sci-fi book case study"></figure>
+            <div class="case-copy">
+              <span class="eyebrow">Book Cover and Concept</span>
+              <h3>Neon Orbit</h3>
+              <div class="case-detail">
+                <strong>Project Goal:</strong>
+                <p>Create a moody cover and interior concept that translates symbolic and celestial themes into a polished collectible visual system.</p>
+              </div>
+              <div class="case-detail">
+                <strong>Deliverables:</strong>
+                <ul>
+                  <li>Front cover design</li>
+                  <li>Paperback mockup direction</li>
+                  <li>Genre-focused typography</li>
+                  <li>Atmospheric presentation image</li>
+                </ul>
+              </div>
+              <div class="case-detail">
+                <strong>Design Direction:</strong>
+                <p>Deep contrast, luminous accents, sharp structure and immersive imagery for a memorable genre-driven presentation.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <figure class="case-image"><img class="image-left" src="assets/portfolio/case-luma-product.jpg" alt="Luma luxury packaging suite case study"></figure>
+            <div class="case-copy">
+              <span class="eyebrow">Brand Identity Study</span>
+              <h3>Luma - Luxury Packaging Suite</h3>
+              <div class="case-detail">
+                <strong>Project Goal:</strong>
+                <p>Create a luxurious packaging system with gold foil accents and a cohesive brand language across product SKUs.</p>
+              </div>
+              <div class="case-detail">
+                <strong>Deliverables:</strong>
+                <ul>
+                  <li>Packaging design system</li>
+                  <li>Gold foil detail specs</li>
+                  <li>Label templates</li>
+                  <li>Brand style guide</li>
+                </ul>
+              </div>
+              <div class="case-detail">
+                <strong>Design Direction:</strong>
+                <p>Minimalist black and gold palette, refined serif typography and premium material finishes that communicate luxury at first glance.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <figure class="case-image"><img class="image-left" src="assets/portfolio/case-elan-new.jpg" alt="Elan Mode fashion content system case study"></figure>
+            <div class="case-copy">
+              <span class="eyebrow">Social Media Study</span>
+              <h3>Elan Mode - Fashion Content System</h3>
+              <div class="case-detail">
+                <strong>Project Goal:</strong>
+                <p>Design a cohesive social media content system for a Parisian fashion brand targeting modern, style-conscious audiences.</p>
+              </div>
+              <div class="case-detail">
+                <strong>Deliverables:</strong>
+                <ul>
+                  <li>Instagram grid templates</li>
+                  <li>Story highlight covers</li>
+                  <li>Carousel layouts</li>
+                  <li>Brand typography system</li>
+                </ul>
+              </div>
+              <div class="case-detail">
+                <strong>Design Direction:</strong>
+                <p>Elegant neutrals with occasional bold accents, editorial photography style and sophisticated serif-sans pairing for captions.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="packages">
+      <div class="section-heading">
+        <span class="eyebrow">Packages</span>
+        <h2>Transparent pricing for every stage of your brand journey.</h2>
+      </div>
+      <div class="packages-grid">
+        <article class="package-card">
+          <h3>Social Media Content Design</h3>
+          <div class="price">$150 - $450</div>
+          <p>Cohesive social media post sets, story templates and carousel designs tailored to your brand identity.</p>
+        </article>
+        <article class="package-card">
+          <h3>Logo Concepts</h3>
+          <div class="price">$150 - $600</div>
+          <p>Two to four unique logo concepts with variations, color codes and font pairing direction.</p>
+        </article>
+        <article class="package-card">
+          <h3>Brand Identity Boards</h3>
+          <div class="price">$350 - $900</div>
+          <p>Comprehensive brand guides with colors, typography, patterns and visual direction.</p>
+        </article>
+        <article class="package-card">
+          <h3>Poster and Infographic Design</h3>
+          <div class="price">$50 - $350</div>
+          <p>Eye-catching posters or data-driven infographics designed for print, education or marketing campaigns.</p>
+        </article>
+        <article class="package-card">
+          <h3>YouTube Thumbnail Design</h3>
+          <div class="price">$50 - $150</div>
+          <p>Click-worthy thumbnail designs with bold typography, vibrant color and strategic composition.</p>
+        </article>
+        <article class="package-card">
+          <h3>Ebook and Lead Magnet Design</h3>
+          <div class="price">$250 - $700</div>
+          <p>Beautifully formatted ebooks, workbooks and lead magnets designed to convert and feel high value.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="process-band" id="process">
+      <div class="section">
+        <div class="section-heading">
+          <span class="eyebrow">Design Process</span>
+          <h2>Simple, clear and built around useful visual direction.</h2>
+        </div>
+        <div class="process-grid">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <h3>Discovery</h3>
+            <p>Understanding your brand, audience, goals and creative vision.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <h3>Concept</h3>
+            <p>Exploring directions, moodboards and initial design strategy.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <h3>Design</h3>
+            <p>Crafting polished visuals with attention to hierarchy and consistency.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">4</div>
+            <h3>Delivery</h3>
+            <p>Final revisions, export formats and organized handoff.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="section-heading">
+        <span class="eyebrow">What Clients Say</span>
+        <h2>Polished visuals for brands, creators and digital projects.</h2>
+      </div>
+      <div class="testimonial-slider" aria-label="Client feedback slideshow">
+        <div class="testimonial-viewport">
+          <div class="testimonials-track">
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"Lari delivered exactly what we needed. His visual direction elevated our brand instantly and made the project look premium."</p>
+              <strong>Sarah M., Fashion Founder</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"Working with Lari was effortless. He understood our ideas immediately and delivered designs that perfectly captured our brand essence."</p>
+              <strong>David L., Online Coach</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"The packaging design exceeded our expectations. He translated our vision into visuals that feel premium and cohesive."</p>
+              <strong>Emma R., Beauty Brand</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">****</div>
+              <p>"The project board looked clean, expensive and easy to understand. It made my offer feel much more professional."</p>
+              <strong>Marta L., Course Creator</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"Fast communication, beautiful composition and a great eye for spacing. The final visuals were ready to use right away."</p>
+              <strong>Julia N., Ecommerce Owner</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"My social media templates finally looked consistent. Lari understood the style and gave the whole brand a calmer premium feeling."</p>
+              <strong>Alex B., Creator</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"The book cover mockups were polished and realistic. They helped me present the idea with much more confidence."</p>
+              <strong>Nina K., Author</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">****</div>
+              <p>"Great taste, clear structure and thoughtful details. The brand identity board felt elegant without being overcomplicated."</p>
+              <strong>Thomas R., Startup Founder</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"The thumbnail concepts were bold and readable. They looked much stronger than what we had before."</p>
+              <strong>Kevin T., YouTube Creator</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"I loved how the design direction tied everything together. The presentation made the brand feel ready for launch."</p>
+              <strong>Elena P., Wellness Brand</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"The final files were organized, polished and visually impressive. I would absolutely work with Lari again."</p>
+              <strong>Chris D., Digital Product Seller</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"He gave my Shopify concept a cleaner structure and made the whole presentation easier to understand."</p>
+              <strong>Victor H., Ecommerce Manager</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">****</div>
+              <p>"The first draft was already strong, and the final version felt polished, consistent and ready to publish."</p>
+              <strong>Monica S., Brand Consultant</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"Lari has a strong eye for hierarchy. The layouts felt premium without losing clarity."</p>
+              <strong>Adam W., Marketing Lead</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"He turned a rough idea into a professional visual system that I could confidently show to clients."</p>
+              <strong>Bianca F., Creative Director</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"The poster concept looked sharp, readable and much more polished than our original reference."</p>
+              <strong>Mateo G., Event Organizer</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">****</div>
+              <p>"Very clean work and good communication. The final brand board made the project feel cohesive."</p>
+              <strong>Linda C., Small Business Owner</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"The ebook cover and mockups looked realistic and high value. He understood the audience perfectly."</p>
+              <strong>Oliver P., Author</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"Lari created visuals that were bold enough for ads but still clean enough for a premium brand."</p>
+              <strong>Rachel T., Paid Ads Specialist</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"His design direction helped us choose colors, typography and product mockups with much more confidence."</p>
+              <strong>Daniel K., Product Founder</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">****</div>
+              <p>"The delivery was organized and easy to use. The design felt modern, premium and clear."</p>
+              <strong>Helen V., Wellness Coach</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"He made my Fiverr gig images look more trustworthy and much more clickable."</p>
+              <strong>Andre N., Freelancer</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"The visual presentation was exactly the kind of premium look I wanted for my launch."</p>
+              <strong>Clara B., Product Creator</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"Lari balanced strong visuals with practical readability. Nothing felt random or overdesigned."</p>
+              <strong>Peter J., Agency Owner</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">****</div>
+              <p>"Great final result. The mockups, colors and spacing made the brand feel much more complete."</p>
+              <strong>Olivia M., Boutique Owner</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"He delivered a polished concept that matched the brief and gave the project a stronger identity."</p>
+              <strong>Simon E., Startup Builder</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"The thumbnail set was readable, energetic and visually consistent. It immediately improved the channel look."</p>
+              <strong>Laura Q., Content Manager</strong>
+            </article>
+            <article class="testimonial">
+              <div class="stars">*****</div>
+              <p>"Lari's work made our presentation feel like a real brand, not just a collection of images."</p>
+              <strong>Mark D., Business Coach</strong>
+            </article>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" type="button" data-slider-prev aria-label="Previous testimonials">&lsaquo;</button>
+          <span class="slider-status" aria-live="polite">1 / 26</span>
+          <button class="slider-btn" type="button" data-slider-next aria-label="Next testimonials">&rsaquo;</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="about-grid">
+        <figure class="portrait">
+          <img src="assets/portfolio/profile.jpg" alt="Portrait of the designer behind Lari Visual Studio">
+        </figure>
+        <div class="about-copy">
+          <span class="eyebrow">About the Designer</span>
+          <h2>Hi, I am Lari</h2>
+          <p>I am a freelance visual designer specializing in premium brand identities, social media design and digital products. I combine strategic thinking with refined aesthetics to help businesses look polished, consistent and ready to sell.</p>
+          <p>Whether you need a complete brand identity, a set of social media templates or a beautifully designed lead magnet, I bring strong layout sense, clear visual direction and care to every project.</p>
+          <div class="button-row">
+            <a class="btn primary" href="#contact">Contact Me</a>
+            <a class="btn" href="mailto:larivisualstudio@proton.me">Email Directly</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="section-heading">
+        <span class="eyebrow">Frequently Asked Questions</span>
+        <h2>Quick answers before we start.</h2>
+      </div>
+      <div class="faq-list">
+        <article class="faq-item">
+          <button class="faq-button" type="button" aria-expanded="false">
+            <span>What is your typical turnaround time?</span>
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="faq-panel">Most small projects take 3 to 7 business days. Larger brand or ecommerce projects depend on scope and revision rounds.</div>
+        </article>
+        <article class="faq-item">
+          <button class="faq-button" type="button" aria-expanded="false">
+            <span>Do you work with international clients?</span>
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="faq-panel">Yes. Communication can happen through email, project messages or video calls depending on the project.</div>
+        </article>
+        <article class="faq-item">
+          <button class="faq-button" type="button" aria-expanded="false">
+            <span>What file formats do I receive?</span>
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="faq-panel">Final files can be prepared as PNG, PDF and other common formats. Editable Canva or Adobe files can be discussed before the project starts.</div>
+        </article>
+        <article class="faq-item">
+          <button class="faq-button" type="button" aria-expanded="false">
+            <span>Can I request revisions?</span>
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="faq-panel">Yes. Revision rounds are agreed before the project begins so expectations are clear from the start.</div>
+        </article>
+        <article class="faq-item">
+          <button class="faq-button" type="button" aria-expanded="false">
+            <span>How do we get started?</span>
+            <span aria-hidden="true">+</span>
+          </button>
+          <div class="faq-panel">Send your project idea, niche, brand name and preferred visual style through the contact form or by email.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="section">
+        <div class="contact-grid">
+          <div>
+            <span class="eyebrow">Contact Us</span>
+            <h2>Let us create something beautiful.</h2>
+            <p class="subtext">Ready to elevate your brand? Send me a message and let us discuss your project.</p>
+            <p class="contact-note">Direct email: <a href="mailto:larivisualstudio@proton.me">larivisualstudio@proton.me</a></p>
+          </div>
+          <form class="contact-form" action="https://formsubmit.co/larivisualstudio@proton.me" method="POST">
+            <input type="hidden" name="_subject" value="New portfolio inquiry from Lari Visual Studio">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <div class="field">
+              <label for="name">Your Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="email">Your Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="message">Tell me about your project</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button class="btn primary" type="submit">Send Message</button>
+            <p class="contact-note">The first FormSubmit message may ask you to confirm this email address. After that, submissions arrive in your Proton inbox.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-copy">&copy; 2026 Lari Visual Studio. All rights reserved.</div>
+      <a class="logo footer-logo" href="#top">Lari Visual Studio</a>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#casestudies">Case Studies</a>
+        <a href="#packages">Packages</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector("#nav-links");
+    const siteHeader = document.querySelector(".site-header");
+    let lastScrollY = window.scrollY;
+
+    function closeMenu() {
+      menuToggle.classList.remove("is-open");
+      navLinks.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("is-open");
+      menuToggle.classList.toggle("is-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    function updateHeaderOnScroll() {
+      const currentY = window.scrollY;
+      const menuIsOpen = navLinks.classList.contains("is-open");
+      if (menuIsOpen || currentY < 90 || currentY < lastScrollY) {
+        siteHeader.classList.remove("is-hidden");
+      } else {
+        siteHeader.classList.add("is-hidden");
+      }
+      lastScrollY = Math.max(currentY, 0);
+    }
+
+    window.addEventListener("scroll", updateHeaderOnScroll, { passive: true });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
+
+    document.querySelectorAll(".faq-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        const isOpen = item.classList.toggle("is-open");
+        button.setAttribute("aria-expanded", String(isOpen));
+      });
+    });
+
+    const slider = document.querySelector(".testimonial-slider");
+    const track = document.querySelector(".testimonials-track");
+    const prevButton = document.querySelector("[data-slider-prev]");
+    const nextButton = document.querySelector("[data-slider-next]");
+    const sliderStatus = document.querySelector(".slider-status");
+    let sliderIndex = 0;
+
+    function visibleTestimonials() {
+      if (window.matchMedia("(max-width: 640px)").matches) return 1;
+      if (window.matchMedia("(max-width: 920px)").matches) return 2;
+      return 3;
+    }
+
+    function updateSlider() {
+      if (!slider || !track) return;
+      const total = track.children.length;
+      const visible = visibleTestimonials();
+      const maxIndex = Math.max(0, total - visible);
+      sliderIndex = Math.min(sliderIndex, maxIndex);
+      const firstCard = track.children[0];
+      const styles = window.getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || "0");
+      const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 0;
+      track.style.transform = `translateX(-${sliderIndex * (cardWidth + gap)}px)`;
+      if (sliderStatus) sliderStatus.textContent = `${sliderIndex + 1} / ${maxIndex + 1}`;
+      if (prevButton) prevButton.disabled = sliderIndex === 0;
+      if (nextButton) nextButton.disabled = sliderIndex === maxIndex;
+    }
+
+    if (prevButton && nextButton) {
+      prevButton.addEventListener("click", () => {
+        sliderIndex = Math.max(0, sliderIndex - 1);
+        updateSlider();
+      });
+
+      nextButton.addEventListener("click", () => {
+        sliderIndex += 1;
+        updateSlider();
+      });
+    }
+
+    window.addEventListener("resize", updateSlider);
+    updateSlider();
+  </script>
+</body>
+</html>
+
