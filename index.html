@@ -437,7 +437,7 @@
     .case-list {
       display: grid;
       gap: 24px;
-      grid-auto-rows: 1fr;
+      grid-auto-rows: auto;
     }
 
     .case-card {
@@ -448,8 +448,8 @@
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: 0 14px 32px rgba(44, 36, 32, 0.06);
-      height: 100%;
-      min-height: 460px;
+      height: auto;
+      min-height: 0;
     }
 
     .case-card:nth-child(even) .case-image {
@@ -466,8 +466,12 @@
       object-position: center center;
     }
 
+    .image-bottom {
+      object-position: center bottom;
+    }
+
     .case-copy {
-      padding: 34px;
+      padding: 30px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -757,6 +761,20 @@
       text-underline-offset: 3px;
     }
 
+    .form-status {
+      min-height: 20px;
+      color: rgba(250, 247, 242, 0.78);
+      font-size: 13px;
+    }
+
+    .form-status.is-success {
+      color: #d8bd7d;
+    }
+
+    .form-status.is-error {
+      color: #ffb3a6;
+    }
+
     .site-footer {
       background: var(--paper);
       border-top: 1px solid var(--line);
@@ -973,7 +991,7 @@
         <p class="subtext">Premium brand identities, social media design, book visuals and digital products crafted with strategic thinking and refined aesthetics for modern brands and creators.</p>
         <div class="button-row">
           <a class="btn primary" href="#contact">Start a Project</a>
-          <a class="btn" href="mailto:larivisualstudio@proton.me">Email Directly</a>
+          <a class="btn" href="mailto:larivisualstudio@proton.me?subject=Project%20inquiry%20from%20Lari%20Visual%20Studio%20website&body=Hi%20Lari,%0D%0A%0D%0AI%20would%20like%20to%20ask%20about%20a%20design%20project.%0D%0A%0D%0AProject%20type:%0D%0ABudget:%0D%0ATimeline:%0D%0A%0D%0AMessage:%0D%0A">Email Directly</a>
         </div>
       </div>
       <div class="hero-collage" aria-label="Portfolio image collage">
@@ -1136,7 +1154,7 @@
           </article>
 
           <article class="case-card">
-            <figure class="case-image"><img class="image-center" src="assets/portfolio/case-celestial.jpg" alt="Neon Orbit sci-fi book case study"></figure>
+            <figure class="case-image"><img class="image-bottom" src="assets/portfolio/case-celestial.jpg" alt="Neon Orbit sci-fi book case study"></figure>
             <div class="case-copy">
               <span class="eyebrow">Book Cover and Concept</span>
               <h3>Neon Orbit</h3>
@@ -1453,7 +1471,7 @@
           <p>Whether you need a complete brand identity, a set of social media templates or a beautifully designed lead magnet, I bring strong layout sense, clear visual direction and care to every project.</p>
           <div class="button-row">
             <a class="btn primary" href="#contact">Contact Me</a>
-            <a class="btn" href="mailto:larivisualstudio@proton.me">Email Directly</a>
+            <a class="btn" href="mailto:larivisualstudio@proton.me?subject=Project%20inquiry%20from%20Lari%20Visual%20Studio%20website&body=Hi%20Lari,%0D%0A%0D%0AI%20would%20like%20to%20ask%20about%20a%20design%20project.%0D%0A%0D%0AProject%20type:%0D%0ABudget:%0D%0ATimeline:%0D%0A%0D%0AMessage:%0D%0A">Email Directly</a>
           </div>
         </div>
       </div>
@@ -1510,12 +1528,9 @@
             <span class="eyebrow">Contact Us</span>
             <h2>Let us create something beautiful.</h2>
             <p class="subtext">Ready to elevate your brand? Send me a message and let us discuss your project.</p>
-            <p class="contact-note">Direct email: <a href="mailto:larivisualstudio@proton.me">larivisualstudio@proton.me</a></p>
+            <p class="contact-note">Direct email: <a href="mailto:larivisualstudio@proton.me?subject=Project%20inquiry%20from%20Lari%20Visual%20Studio%20website">larivisualstudio@proton.me</a></p>
           </div>
-          <form class="contact-form" action="https://formsubmit.co/larivisualstudio@proton.me" method="POST">
-            <input type="hidden" name="_subject" value="New portfolio inquiry from Lari Visual Studio">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
+          <form class="contact-form" data-email="larivisualstudio@proton.me" method="POST">
             <div class="field">
               <label for="name">Your Name</label>
               <input id="name" name="name" type="text" autocomplete="name" required>
@@ -1529,7 +1544,8 @@
               <textarea id="message" name="message" required></textarea>
             </div>
             <button class="btn primary" type="submit">Send Message</button>
-            <p class="contact-note">The first FormSubmit message may ask you to confirm this email address. After that, submissions arrive in your Proton inbox.</p>
+            <p class="form-status" role="status" aria-live="polite"></p>
+            <p class="contact-note">The form is ready for Web3Forms. Until an access key is added, it opens a pre-filled email message to your Proton address.</p>
           </form>
         </div>
       </div>
@@ -1603,6 +1619,7 @@
     const nextButton = document.querySelector("[data-slider-next]");
     const sliderStatus = document.querySelector(".slider-status");
     let sliderIndex = 0;
+    const WEB3FORMS_ACCESS_KEY = "";
 
     function visibleTestimonials() {
       if (window.matchMedia("(max-width: 640px)").matches) return 1;
@@ -1640,6 +1657,68 @@
 
     window.addEventListener("resize", updateSlider);
     updateSlider();
+
+    document.querySelectorAll(".contact-form").forEach((form) => {
+      const status = form.querySelector(".form-status");
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const recipient = form.dataset.email || "larivisualstudio@proton.me";
+        const name = String(formData.get("name") || "").trim();
+        const email = String(formData.get("email") || "").trim();
+        const message = String(formData.get("message") || "").trim();
+        const subject = "New portfolio inquiry from Lari Visual Studio";
+        const body = [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          "",
+          "Project message:",
+          message
+        ].join("\n");
+
+        function setStatus(text, type) {
+          if (!status) return;
+          status.textContent = text;
+          status.className = `form-status ${type ? `is-${type}` : ""}`.trim();
+        }
+
+        if (!WEB3FORMS_ACCESS_KEY) {
+          const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailto;
+          setStatus("Your email app should open with the message filled in. If it does not open, please email me directly at larivisualstudio@proton.me.", "success");
+          return;
+        }
+
+        setStatus("Sending message...", "");
+        const payload = {
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject,
+          from_name: name,
+          email,
+          message,
+          botcheck: ""
+        };
+
+        try {
+          const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+          const result = await response.json();
+          if (!response.ok || !result.success) throw new Error("Message failed");
+          form.reset();
+          setStatus("Thank you. Your message has been sent successfully.", "success");
+        } catch (error) {
+          const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailto;
+          setStatus("The form service did not respond, so your email app has been opened as a backup.", "error");
+        }
+      });
+    });
   </script>
 </body>
 </html>
