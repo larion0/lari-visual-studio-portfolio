@@ -410,6 +410,35 @@
       font-size: 14px;
     }
 
+    .service-price {
+      display: inline-flex;
+      margin: 12px 0 10px;
+      color: var(--gold-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .service-card .card-link {
+      display: inline-flex;
+      margin-top: 16px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .service-helper {
+      max-width: 720px;
+      margin: 34px auto 0;
+      text-align: center;
+      display: grid;
+      justify-items: center;
+      gap: 16px;
+    }
+
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -988,10 +1017,10 @@
       <div class="hero-copy">
         <span class="eyebrow">Premium Visual Design Studio</span>
         <h1>Visual Design for Creator Brands</h1>
-        <p class="subtext">Premium brand identities, social media design, book visuals and digital products crafted with strategic thinking and refined aesthetics for modern brands and creators.</p>
+        <p class="subtext">Premium social media design, ebook visuals, poster systems, logo concepts, thumbnails and brand identity boards crafted with strategic thinking and refined aesthetics.</p>
         <div class="button-row">
           <a class="btn primary" href="#contact">Start a Project</a>
-          <a class="btn" href="mailto:larivisualstudio@proton.me?subject=Project%20inquiry%20from%20Lari%20Visual%20Studio%20website&body=Hi%20Lari,%0D%0A%0D%0AI%20would%20like%20to%20ask%20about%20a%20design%20project.%0D%0A%0D%0AProject%20type:%0D%0ABudget:%0D%0ATimeline:%0D%0A%0D%0AMessage:%0D%0A">Email Directly</a>
+          <a class="btn" href="mailto:larivisualstudio@proton.me?subject=Project%20inquiry%20from%20Lari%20Visual%20Studio%20website&body=Hi%20Lari,%0D%0A%0D%0AI%20would%20like%20to%20ask%20about%20a%20design%20project.%0D%0A%0D%0AProject%20type:%0D%0ABudget:%0D%0ATimeline:%0D%0A%0D%0AMessage:%0D%0A">Email Me Directly</a>
         </div>
       </div>
       <div class="hero-collage" aria-label="Portfolio image collage">
@@ -1000,8 +1029,8 @@
           <figcaption class="hero-label">Book Design</figcaption>
         </figure>
         <figure class="hero-card side">
-          <img src="assets/portfolio/hero-ecommerce.jpg" alt="Wellness ecommerce design concept">
-          <figcaption class="hero-label">Ecommerce</figcaption>
+          <img src="assets/portfolio/hero-ecommerce.jpg" alt="Wellness digital visual concept">
+          <figcaption class="hero-label">Digital Visuals</figcaption>
         </figure>
         <figure class="hero-card bottom">
           <img src="assets/portfolio/hero-brand.jpg" alt="Outdoor brand identity presentation">
@@ -1014,51 +1043,67 @@
       <div class="section">
         <div class="section-heading">
           <span class="eyebrow">Services</span>
-          <h2>End-to-end visual design solutions tailored for modern brands and digital creators.</h2>
+          <h2>Focused visual design services for polished brand and content assets.</h2>
         </div>
         <div class="card-grid">
           <article class="service-card">
             <figure><img class="image-left" src="assets/portfolio/service-social-new.jpg" alt="Social media content design preview"></figure>
             <div>
               <h3>Social Media Design</h3>
+              <div class="service-price">$49-$250</div>
               <p>Scroll-stopping posts, stories and content layouts for creators, brands and digital campaigns.</p>
+              <a class="card-link" href="#contact">Contact Me</a>
             </div>
           </article>
           <article class="service-card">
             <figure><img src="assets/portfolio/service-book-new.jpg" alt="Book and lead magnet design preview"></figure>
             <div>
               <h3>Ebook and Lead Magnet Design</h3>
+              <div class="service-price">$150-$600</div>
               <p>Beautiful workbooks, ebooks and lead magnets that communicate value before the download.</p>
+              <a class="card-link" href="#contact">Contact Me</a>
             </div>
           </article>
           <article class="service-card">
             <figure><img src="assets/portfolio/service-poster.jpg" alt="Poster and infographic design preview"></figure>
             <div>
               <h3>Poster and Infographic Design</h3>
+              <div class="service-price">$50-$250</div>
               <p>Clear, visually rich posters and campaign infographics for presentations, marketing and learning.</p>
+              <a class="card-link" href="#contact">Contact Me</a>
             </div>
           </article>
           <article class="service-card">
             <figure><img src="assets/portfolio/service-logo.jpg" alt="Logo concept presentation preview"></figure>
             <div>
               <h3>Logo Concepts</h3>
+              <div class="service-price">$99-$350</div>
               <p>Memorable logo concepts with polished mockups, brand direction and visual consistency.</p>
+              <a class="card-link" href="#contact">Contact Me</a>
             </div>
           </article>
           <article class="service-card">
             <figure><img class="image-left" src="assets/portfolio/service-youtube-new.jpg" alt="YouTube thumbnail design preview"></figure>
             <div>
               <h3>YouTube Thumbnail Design</h3>
+              <div class="service-price">$25-$150</div>
               <p>Eye-catching thumbnails for creator channels with strong contrast, focus and platform-ready framing.</p>
+              <a class="card-link" href="#contact">Contact Me</a>
             </div>
           </article>
           <article class="service-card">
             <figure><img src="assets/portfolio/service-brand-new.jpg" alt="Brand identity board preview"></figure>
             <div>
               <h3>Brand Identity Boards</h3>
+              <div class="service-price">$150-$500</div>
               <p>Strategic visual boards with palette, typography, mockups and clean design direction.</p>
+              <a class="card-link" href="#contact">Contact Me</a>
             </div>
           </article>
+        </div>
+        <div class="service-helper">
+          <p class="subtext">Not sure which service fits your project? Email me directly and I'll help you choose the best direction.</p>
+          <a class="btn" href="mailto:larivisualstudio@proton.me?subject=Help%20choosing%20a%20visual%20design%20service">Email Me Directly</a>
         </div>
       </div>
     </section>
@@ -1089,7 +1134,7 @@
           <figure><img src="assets/portfolio/project-luma.jpg" alt="Luma clean beauty ecommerce concept"></figure>
           <div>
             <h3>Luma Clean Beauty</h3>
-            <span class="project-type">Web Design and Ecommerce</span>
+            <span class="project-type">Digital Brand Visuals</span>
             <p>Complete ecommerce website mockup with responsive design and product showcase.</p>
           </div>
         </article>
@@ -1234,38 +1279,26 @@
     <section class="section" id="packages">
       <div class="section-heading">
         <span class="eyebrow">Packages</span>
-        <h2>Transparent pricing for every stage of your brand journey.</h2>
+        <h2>Choose a package based on project size.</h2>
       </div>
       <div class="packages-grid">
         <article class="package-card">
-          <h3>Social Media Content Design</h3>
-          <div class="price">$150 - $450</div>
-          <p>Cohesive social media post sets, story templates and carousel designs tailored to your brand identity.</p>
+          <h3>Starter Visual Package</h3>
+          <div class="price">$49 - $99</div>
+          <p>For one focused visual need, with basic export files and one revision round.</p>
+          <a class="card-link" href="#contact">Contact Me</a>
         </article>
         <article class="package-card">
-          <h3>Logo Concepts</h3>
-          <div class="price">$150 - $600</div>
-          <p>Two to four unique logo concepts with variations, color codes and font pairing direction.</p>
+          <h3>Signature Design Package</h3>
+          <div class="price">$150 - $350</div>
+          <p>For more complete visual sets with organized delivery and two revision rounds.</p>
+          <a class="card-link" href="#contact">Contact Me</a>
         </article>
         <article class="package-card">
-          <h3>Brand Identity Boards</h3>
-          <div class="price">$350 - $900</div>
-          <p>Comprehensive brand guides with colors, typography, patterns and visual direction.</p>
-        </article>
-        <article class="package-card">
-          <h3>Poster and Infographic Design</h3>
-          <div class="price">$50 - $350</div>
-          <p>Eye-catching posters or data-driven infographics designed for print, education or marketing campaigns.</p>
-        </article>
-        <article class="package-card">
-          <h3>YouTube Thumbnail Design</h3>
-          <div class="price">$50 - $150</div>
-          <p>Click-worthy thumbnail designs with bold typography, vibrant color and strategic composition.</p>
-        </article>
-        <article class="package-card">
-          <h3>Ebook and Lead Magnet Design</h3>
-          <div class="price">$250 - $700</div>
-          <p>Beautifully formatted ebooks, workbooks and lead magnets designed to convert and feel high value.</p>
+          <h3>Premium Visual System</h3>
+          <div class="price">$450 - $900</div>
+          <p>For larger visual systems with multiple assets, presentation mockups and a custom timeline.</p>
+          <a class="card-link" href="#contact">Contact Me</a>
         </article>
       </div>
     </section>
@@ -1332,7 +1365,7 @@
             <article class="testimonial">
               <div class="stars">*****</div>
               <p>"Fast communication, beautiful composition and a great eye for spacing. The final visuals were ready to use right away."</p>
-              <strong>Julia N., Ecommerce Owner</strong>
+              <strong>Julia N., Online Brand Owner</strong>
             </article>
             <article class="testimonial">
               <div class="stars">*****</div>
@@ -1366,8 +1399,8 @@
             </article>
             <article class="testimonial">
               <div class="stars">*****</div>
-              <p>"He gave my Shopify concept a cleaner structure and made the whole presentation easier to understand."</p>
-              <strong>Victor H., Ecommerce Manager</strong>
+              <p>"He gave my digital brand concept a cleaner structure and made the whole presentation easier to understand."</p>
+              <strong>Victor H., Digital Project Manager</strong>
             </article>
             <article class="testimonial">
               <div class="stars">****</div>
@@ -1471,7 +1504,7 @@
           <p>Whether you need a complete brand identity, a set of social media templates or a beautifully designed lead magnet, I bring strong layout sense, clear visual direction and care to every project.</p>
           <div class="button-row">
             <a class="btn primary" href="#contact">Contact Me</a>
-            <a class="btn" href="mailto:larivisualstudio@proton.me?subject=Project%20inquiry%20from%20Lari%20Visual%20Studio%20website&body=Hi%20Lari,%0D%0A%0D%0AI%20would%20like%20to%20ask%20about%20a%20design%20project.%0D%0A%0D%0AProject%20type:%0D%0ABudget:%0D%0ATimeline:%0D%0A%0D%0AMessage:%0D%0A">Email Directly</a>
+            <a class="btn" href="mailto:larivisualstudio@proton.me?subject=Project%20inquiry%20from%20Lari%20Visual%20Studio%20website&body=Hi%20Lari,%0D%0A%0D%0AI%20would%20like%20to%20ask%20about%20a%20design%20project.%0D%0A%0D%0AProject%20type:%0D%0ABudget:%0D%0ATimeline:%0D%0A%0D%0AMessage:%0D%0A">Email Me Directly</a>
           </div>
         </div>
       </div>
@@ -1545,7 +1578,6 @@
             </div>
             <button class="btn primary" type="submit">Send Message</button>
             <p class="form-status" role="status" aria-live="polite"></p>
-            <p class="contact-note">The form is ready for Web3Forms. Until an access key is added, it opens a pre-filled email message to your Proton address.</p>
           </form>
         </div>
       </div>
